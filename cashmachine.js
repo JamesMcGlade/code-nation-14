@@ -1,7 +1,9 @@
+// PIN functions: add PIN, check PIN, change PIN
+
 let pinCount = 0
 
 const pinblock = (pinCount = undefined, block = false) => {
-    if (pinCount < 3){
+    if (pinCount < 2){
         block = false;
     }
 
@@ -27,6 +29,25 @@ checkPin(1233);
 checkPin(1233);
 checkPin(1233);
 checkPin(1233);
+
+const changePIN = (userInput = undefined, pin = undefined, newPin = undefined) => {
+    if (userInput == pin){
+        pin == newPin;
+        console.log("You have succesfully changed your PIN");
+    }
+
+    else{
+        console.log("Wrong PIN. Try again")
+        pinblock(pinCount++);
+    }
+}
+
+changePIN(1234, 1234, 9999);
+changePIN(1233, 1234, 9999);
+
+// Withdrawals, deposits and balance
+
+
 
 const bankWithdrawal = (withdrawal = 250, limit = 250, bankBalance = 500) => {
     /*prompt("How much would you like to withdraw?") == withdrawal;*/
