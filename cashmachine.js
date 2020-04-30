@@ -1,6 +1,9 @@
 // PIN functions: add PIN, check PIN, change PIN
 
-let pinCount = 0
+let pinCount = 0;
+let bankBalance = 500;
+let depositLimit = 250;
+let pin = 1234;
 
 const pinblock = (pinCount = undefined, block = false) => {
     if (pinCount < 2){
@@ -9,35 +12,39 @@ const pinblock = (pinCount = undefined, block = false) => {
 
     else {
         block = true;
-        console.log("You exceeded the number of attemps. Goodbye now.");
+        alert("You exceeded the number of attemps. Goodbye now.");
     }
 }
 
 const checkPin = (pin = undefined) => {
-    if (pin != 1234){
-        console.log("Wrong PIN. Try again");
+    let userInput == prompt('Enter your PIN');
+    if (userInput != pin){
+        alert("Wrong PIN. Try again");
         pinblock(pinCount++);
     
     }
 
     else {
-        console.log("Welcome to the Iron Bank");
+        alert("Welcome to the Iron Bank");
+        menu();
     }
 }
 
-checkPin(1233);
-checkPin(1233);
-checkPin(1233);
-checkPin(1233);
+const menu = () =>{
+    let userInput == prompt;
 
-const changePIN = (userInput = undefined, pin = undefined, newPin = undefined) => {
+    if (userInput == 1);
+} 
+
+const changePIN = (userInput = undefined, pin, newPin = undefined) => {
     if (userInput == pin){
+        newPin == prompt("Enter new PIN");
         pin == newPin;
-        console.log("You have succesfully changed your PIN");
+        alert("You have succesfully changed your PIN");
     }
 
     else{
-        console.log("Wrong PIN. Try again")
+        alert("Wrong PIN. Try again");
         pinblock(pinCount++);
     }
 }
@@ -72,7 +79,7 @@ bankWithdrawal(100, 50, 500)
 bankWithdrawal(500, 500, 500)
 bankWithdrawal(500, 500, 100)
 
-const deposit = (depositAmount, bankBalance = 500, depositLimit = 250) =>{
+const deposit = (depositAmount, bankBalance, depositLimit) =>{
     if (depositAmount > depositLimit){
         console.log("You have exceeded the deposit limit: £", depositLimit)
     }
@@ -86,3 +93,7 @@ const deposit = (depositAmount, bankBalance = 500, depositLimit = 250) =>{
 deposit(200);
 deposit(250);
 deposit(300);
+
+
+
+checkPin();
