@@ -12,12 +12,12 @@ const pinblock = (pinCount = undefined, block = false) => {
 
     else {
         block = true;
-        alert("You exceeded the number of attemps. Goodbye now.");
+        alert("You have exceeded the number of attemps. Goodbye now.");
     }
 }
 
 const checkPin = (pin = undefined) => {
-    let userInput == prompt('Enter your PIN');
+    let userInput = prompt('Enter your PIN');
     if (userInput != pin){
         alert("Wrong PIN. Try again");
         pinblock(pinCount++);
@@ -31,14 +31,20 @@ const checkPin = (pin = undefined) => {
 }
 
 const menu = () =>{
-    let userInput == prompt;
-
-    if (userInput == 1);
+    let userInput = parseInt(prompt("What would you like to do? /nChange PIN: Press 1 /nWithdrawal: Press 2 /nDeposit: Press 3 /n"));
+    switch (userInput) {
+        case (userInput == 1):
+            changePIN();
+        case (userInput == 2):
+            bankWithdrawal();
+        case (userInput == 3):
+            deposit();
+    }
 } 
 
-const changePIN = (userInput = undefined, pin, newPin = undefined) => {
+const changePIN = (userInput, pin, newPin) => {
     if (userInput == pin){
-        newPin == prompt("Enter new PIN");
+        newPin == parseInt(prompt("Enter new PIN"));
         pin == newPin;
         alert("You have succesfully changed your PIN");
     }
@@ -49,51 +55,37 @@ const changePIN = (userInput = undefined, pin, newPin = undefined) => {
     }
 }
 
-changePIN(1234, 1234, 9999);
-changePIN(1233, 1234, 9999);
-
 // Withdrawals, deposits and balance
 
 
-
-const bankWithdrawal = (withdrawal = 250, limit = 250, bankBalance = 500) => {
-    /*prompt("How much would you like to withdraw?") == withdrawal;*/
+const bankWithdrawal = (withdrawal, limit, bankBalance) => {
+    prompt("How much would you like to withdraw?") == withdrawal;
 
     if (withdrawal > limit){
-        console.log("The withdrawal limit is £250 a day. You can still withdraw £", limit);
+        alert("The withdrawal limit is £250 a day. You can still withdraw £", limit);
     }
 
     else if (withdrawal > bankBalance){
-        console.log("You don't have enough funds in your account. You currently have £", bankBalance, " in your account");
+        alert("You don't have enough funds in your account. You currently have £", bankBalance, " in your account");
     }
 
     else{
         limit = (limit - withdrawal)
         bankBalance = (bankBalance - withdrawal);
-        console.log("You have withdrawn £", withdrawal, ". Your bank balance now is £", bankBalance, "You can still withdraw £", limit);
+        alert("You have withdrawn £", withdrawal, ". Your bank balance now is £", bankBalance, "You can still withdraw £", limit);
     }
 }
 
-bankWithdrawal();
-bankWithdrawal(100, 50, 500)
-bankWithdrawal(500, 500, 500)
-bankWithdrawal(500, 500, 100)
-
 const deposit = (depositAmount, bankBalance, depositLimit) =>{
+    prompt('Enter a deposit amount') == depositAmount;
     if (depositAmount > depositLimit){
-        console.log("You have exceeded the deposit limit: £", depositLimit)
+        alert("You have exceeded the deposit limit: £", depositLimit)
     }
 
     else{
-        bankBalance == (bankBalance + depositAmount);
-        console.log("You have successfully deposited £", depositAmount, ". Your current bank balance is £", bankBalance);
+        bankBalance = (bankBalance + depositAmount);
+        alert("You have successfully deposited £", depositAmount, ". Your current bank balance is £", bankBalance);
     }
 }
-
-deposit(200);
-deposit(250);
-deposit(300);
-
-
 
 checkPin();
