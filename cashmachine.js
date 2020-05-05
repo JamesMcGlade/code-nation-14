@@ -4,6 +4,8 @@ let pinCount = 0;
 let bankBalance = 500;
 let depositLimit = 250;
 let pin = 1234;
+let balanceDollars = 0;
+let balanceEuros = 0;
 
 const pinblock = (pinCount = undefined, block = false) => {
     if (pinCount < 2){
@@ -17,7 +19,7 @@ const pinblock = (pinCount = undefined, block = false) => {
 }
 
 const checkPin = (pin = undefined) => {
-    let userInput = prompt('Enter your PIN');
+    let userInput = parseInt(prompt('Enter your PIN'));
     if (userInput != pin){
         alert("Wrong PIN. Try again");
         pinblock(pinCount++);
@@ -31,7 +33,7 @@ const checkPin = (pin = undefined) => {
 }
 
 const menu = () =>{
-    let userInput = parseInt(prompt("What would you like to do? /nChange PIN: Press 1 /nWithdrawal: Press 2 /nDeposit: Press 3 /n"));
+    let userInput = parseInt(prompt("What would you like to do? /nChange PIN: Press 1 /nWithdrawal: Press 2 /nDeposit: Press 3 /nExchange Currency: Press 4 /n"));
     switch (userInput) {
         case (userInput == 1):
             changePIN();
@@ -39,6 +41,8 @@ const menu = () =>{
             bankWithdrawal();
         case (userInput == 3):
             deposit();
+        case (userInput == 4):
+            changeCurrency();
     }
 } 
 
@@ -77,7 +81,7 @@ const bankWithdrawal = (withdrawal, limit, bankBalance) => {
 }
 
 const deposit = (depositAmount, bankBalance, depositLimit) =>{
-    prompt('Enter a deposit amount') == depositAmount;
+    parseInt(prompt('Enter a deposit amount')) == depositAmount;
     if (depositAmount > depositLimit){
         alert("You have exceeded the deposit limit: £", depositLimit)
     }
@@ -85,6 +89,31 @@ const deposit = (depositAmount, bankBalance, depositLimit) =>{
     else{
         bankBalance = (bankBalance + depositAmount);
         alert("You have successfully deposited £", depositAmount, ". Your current bank balance is £", bankBalance);
+    }
+}
+
+const changeDollars = () =>{
+    parseInt(prompt("The exchange ratio is 1.5. Enter an amount to exchange for dollars"))
+    if (userInput > bankBalance){
+        alert("Not enough funds in the account. Your current balance is £", bankBalance)
+    }
+
+    else{
+        bankBalance = (bankBalance - userInput)
+        balanceDollars = (userInput * 1.5)
+        alert("You have successfully exchanged £", userInput, "for $", balanceDollars);
+
+    }
+
+}
+
+const changeCurrency = () =>{
+    userInput = parseInt(prompt("Which currency would you like to exchange to? /nDollars: Press 1 /nEuros: Press 2 /nTo return to the main menu, press 3"))
+
+    switch (userInput){
+        case (userInput = 1):
+            changeDollars()
+
     }
 }
 
